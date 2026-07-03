@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Is There Escape?</title>
+  <link rel="icon" href="assets/images/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <img class="logo" src="assets/images/logo.png" alt="Is There Escape?">
+  </header>
+
+  <nav class="site-nav">
+    <a href="index.html">Home</a>
+    <a href="soundtrack.html">Soundtrack</a>
+    <a href="content-warnings.html">Content Warnings</a>
+    <a href="press-kit.html">Press Kit</a>
+    <a href="contact.html" class="active">Contact</a>
+    <a href="tos.html">Terms of Service</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </nav>
+
+  <main>
+    <h1>Contact</h1>
+    <p>Got a question, press inquiry, or bug report? Reach out below.</p>
+
+    <!--
+      ============================================
+      EDIT HERE: EMAIL & SOCIAL LINKS
+      ============================================
+      - Replace "you@example.com" with your real email (in TWO spots
+        below: the mailto: link and the visible text).
+      - Replace href="#" on each social link with the real URL.
+      - Delete any <li> lines for socials you don't use.
+      - Copy an <li> line if you need to add another one.
+    -->
+    <ul class="contact-list edit-me">
+      <li><span class="edit-me-label">↓ REPLACE EVERYTHING BELOW ↓</span></li>
+      <li>✉ Email: <a href="mailto:you@example.com">you@example.com</a></li>
+      <li>🐦 Twitter / X: <a href="#" target="_blank" rel="noopener">@yourhandle</a></li>
+      <li>💬 Discord: <a href="#" target="_blank" rel="noopener">Join the server</a></li>
+      <li>🦋 Bluesky: <a href="#" target="_blank" rel="noopener">@yourhandle</a></li>
+    </ul>
+    <!-- END EDIT: EMAIL & SOCIAL LINKS -->
+
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> Jinnworks. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
