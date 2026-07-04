@@ -1,0 +1,391 @@
+:root{
+  --bg0:#24050b;
+  --bg1:#2c0710;
+  --bg2:#3b0a18;
+  --bg3:#150308;
+
+  --text:#ba640a;
+  --text2:#d87a12;
+  --text3:#7d3e04;
+
+  --line: rgba(186,100,10,.35);
+  --glow: rgba(186,100,10,.55);
+  --shadow: rgba(0,0,0,.55);
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+
+body{
+  margin:0;
+  background: radial-gradient(1200px 700px at 20% 10%, var(--bg1), var(--bg0) 55%, var(--bg3) 100%);
+  color: var(--text);
+  overflow-x:hidden;
+}
+
+/* Retro background layers */
+.bg{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.35)),
+    radial-gradient(900px 500px at 80% 20%, rgba(186,100,10,.12), transparent 60%),
+    radial-gradient(700px 400px at 30% 90%, rgba(186,100,10,.08), transparent 55%);
+  z-index:-1;
+}
+
+/* VGA 437-ish font stack.
+   Exact VGA437 depends on system; this keeps the retro look where available. */
+body, button, input, textarea{
+  font-family: "MS PGothic", "Terminal", "VT323", "Press Start 2P", "IBM Plex Mono", "Courier New", monospace;
+  letter-spacing: .3px;
+}
+
+.wrap{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 22px 18px 40px;
+}
+
+/* Scanlines + subtle CRT glow */
+.wrap::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,.03) 0px,
+      rgba(255,255,255,.00) 2px,
+      rgba(0,0,0,.00) 4px
+    );
+  mix-blend-mode: overlay;
+  opacity:.55;
+  z-index:-1;
+}
+
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding: 10px 4px 18px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-shadow: 0 0 18px var(--glow);
+}
+.brand-mark{
+  color: var(--text2);
+  font-size: 26px;
+  line-height:1;
+}
+.brand-title{
+  font-size: 18px;
+  margin:0;
+  text-transform: uppercase;
+}
+
+.links{
+  display:flex;
+  gap:16px;
+}
+.links a{
+  color: var(--text);
+  text-decoration:none;
+  font-size: 12px;
+  padding: 6px 10px;
+  border: 1px solid rgba(186,100,10,.25);
+  background: rgba(0,0,0,.15);
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+  transition: transform .12s ease, border-color .12s ease, background .12s ease;
+  text-transform: uppercase;
+}
+.links a:hover{
+  transform: translateY(-1px);
+  border-color: rgba(186,100,10,.5);
+  background: rgba(186,100,10,.08);
+}
+
+.hero{
+  display:grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 18px;
+  align-items: start;
+  margin-top: 6px;
+}
+
+@media (max-width: 900px){
+  .hero{ grid-template-columns: 1fr; }
+}
+
+.subtitle{
+  margin:0 0 8px;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: rgba(186,100,10,.92);
+}
+
+.headline{
+  margin:0 0 12px;
+  font-size: 38px;
+  line-height: 1.05;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 14px rgba(186,100,10,.35),
+    0 0 40px rgba(186,100,10,.18);
+}
+
+.desc{
+  margin:0 0 18px;
+  max-width: 56ch;
+  color: rgba(186,100,10,.86);
+  line-height: 1.55;
+}
+
+.cta-row{
+  display:flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  border-radius: 2px;
+  border: 1px solid rgba(186,100,10,.38);
+  padding: 10px 14px;
+  font-size: 12px;
+  text-transform: uppercase;
+  background: rgba(0,0,0,.2);
+  color: var(--text2);
+  box-shadow: 0 0 24px rgba(186,100,10,.15);
+  transition: transform .12s ease, background .12s ease, border-color .12s ease;
+}
+.btn:hover{
+  transform: translateY(-1px);
+}
+.btn.primary{
+  background: rgba(186,100,10,.12);
+  border-color: rgba(186,100,10,.65);
+  color: #ffcc88;
+}
+.btn.ghost{
+  background: rgba(0,0,0,.18);
+  color: var(--text);
+}
+
+.status{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(186,100,10,.25);
+  background: rgba(0,0,0,.18);
+  width: fit-content;
+  max-width: 100%;
+  flex-wrap: wrap;
+  box-shadow: 0 0 24px rgba(0,0,0,.25);
+}
+.dot{
+  width: 10px; height:10px;
+  border-radius: 50%;
+  background: var(--text2);
+  box-shadow: 0 0 18px rgba(186,100,10,.65);
+  animation: pulse 1s infinite;
+}
+@keyframes pulse{
+  0%{ transform: scale(.95); opacity:.85; }
+  50%{ transform: scale(1.15); opacity:1; }
+  100%{ transform: scale(.95); opacity:.85; }
+}
+.status-text{ font-size: 12px; text-transform: uppercase; }
+.sep{ opacity:.35; }
+.clock{
+  font-size: 13px;
+  color: #ffd29e;
+  text-shadow: 0 0 18px rgba(186,100,10,.35);
+}
+
+/* Right panel */
+.panel{
+  border: 1px solid rgba(186,100,10,.28);
+  background: rgba(0,0,0,.22);
+  box-shadow:
+    0 0 0 1px rgba(186,100,10,.08),
+    0 0 60px rgba(186,100,10,.10),
+    inset 0 0 0 1px rgba(255,255,255,.03);
+  overflow:hidden;
+  border-radius: 3px;
+}
+
+.panel-title{
+  display:flex;
+  gap:8px;
+  padding: 10px 12px 8px;
+  border-bottom: 1px solid rgba(186,100,10,.18);
+  background: linear-gradient(180deg, rgba(186,100,10,.10), rgba(0,0,0,.10));
+}
+.tag{
+  font-size: 11px;
+  text-transform: uppercase;
+  border: 1px solid rgba(186,100,10,.35);
+  padding: 4px 8px;
+  color: #ffcf9a;
+  background: rgba(0,0,0,.18);
+}
+.tag.alt{
+  color: var(--text);
+  border-color: rgba(186,100,10,.22);
+}
+
+.fake-screen{
+  position:relative;
+  padding: 12px;
+}
+
+.scan{
+  position:absolute;
+  left:-10%;
+  right:-10%;
+  top:-20%;
+  height: 55px;
+  background: linear-gradient(180deg, rgba(186,100,10,.0), rgba(186,100,10,.22), rgba(186,100,10,.0));
+  filter: blur(1px);
+  opacity:.35;
+  animation: scan 3.2s infinite;
+}
+@keyframes scan{
+  0%{ transform: translateY(0); }
+  60%{ transform: translateY(240px); }
+  100%{ transform: translateY(340px); }
+}
+
+.ascii{
+  margin:0;
+  font-size: 12px;
+  line-height: 1.25;
+  color: rgba(186,100,10,.95);
+  text-shadow: 0 0 16px rgba(186,100,10,.25);
+  white-space: pre-wrap;
+}
+
+.screen-hints{
+  display:flex;
+  gap:12px;
+  flex-wrap: wrap;
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: 1px dashed rgba(186,100,10,.25);
+}
+.hint{
+  font-size: 11px;
+  color: rgba(186,100,10,.82);
+  text-transform: uppercase;
+}
+
+/* Features */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 18px;
+}
+@media (max-width: 900px){
+  .grid{ grid-template-columns: 1fr; }
+}
+
+.card{
+  padding: 14px 14px 16px;
+  border: 1px solid rgba(186,100,10,.22);
+  background: rgba(0,0,0,.18);
+  box-shadow: 0 0 48px rgba(0,0,0,.18);
+}
+.card h3{
+  margin: 0 0 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #ffcf9a;
+}
+.card p{
+  margin:0;
+  color: rgba(186,100,10,.86);
+  line-height: 1.55;
+  font-size: 13px;
+}
+
+/* Download */
+.download{
+  margin-top: 16px;
+}
+.download-card{
+  border: 1px solid rgba(186,100,10,.28);
+  background: rgba(0,0,0,.2);
+  padding: 16px;
+  box-shadow: 0 0 80px rgba(0,0,0,.2);
+}
+.dl-title{
+  margin:0 0 8px;
+  text-transform: uppercase;
+  color:#ffcf9a;
+  font-size: 16px;
+}
+.dl-desc{
+  margin:0 0 14px;
+  color: rgba(186,100,10,.84);
+  line-height: 1.5;
+}
+.dl-row{
+  display:flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.dl-btn{
+  text-decoration:none;
+  flex: 1 1 160px;
+  text-align:center;
+  padding: 12px 14px;
+  border: 1px solid rgba(186,100,10,.35);
+  background: rgba(186,100,10,.10);
+  color: #ffd29e;
+  text-transform: uppercase;
+  font-size: 12px;
+  transition: transform .12s ease, background .12s ease, border-color .12s ease;
+}
+.dl-btn:hover{
+  transform: translateY(-1px);
+  background: rgba(186,100,10,.16);
+  border-color: rgba(186,100,10,.6);
+}
+.fineprint{
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(186,100,10,.25);
+  color: rgba(186,100,10,.78);
+  font-size: 12px;
+}
+.bullet{ color: #ffcf9a; margin-right: 6px; }
+
+/* Footer */
+.footer{
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(186,100,10,.18);
+}
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  color: rgba(186,100,10,.78);
+  font-size: 12px;
+  flex-wrap: wrap;
+}
+.muted{ opacity:.8; }
