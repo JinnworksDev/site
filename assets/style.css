@@ -1,29 +1,10 @@
-/* =========================================================
-   IS THERE ESCAPE? — Site stylesheet
-   =========================================================
-
-   FONT NOTE:
-   You said you want "Perfect DOS VGA 437" for the text.
-   That font isn't free to link from Google Fonts, so this
-   file currently falls back to "VT323" (a free retro
-   terminal font) so the site looks right immediately.
-
-   TO ADD YOUR REAL FONT LATER:
-   1. Get the font file (.woff2 is best) — often named
-      something like "Px437_PerfectDOSVGA437.woff2"
-   2. Create a folder: assets/fonts/
-   3. Put the font file in there
-   4. Uncomment the @font-face block below and fix the path
-   ========================================================= */
-
-/*
 @font-face {
   font-family: 'Perfect DOS VGA 437';
-  src: url('fonts/Px437_PerfectDOSVGA437.woff2') format('woff2');
+  src: url('fonts/Perfect DOS VGA 437 Win.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
 }
-*/
+
 
 :root {
   /* Background variants built from #24050b */
